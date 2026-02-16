@@ -7,7 +7,8 @@ public class Ticket_CLI {
 
         // declear variables
         ArrayList<String> tickets = new ArrayList<>();
-        Scanner input = new Scanner(System.in);
+        Scanner inputChoise = new Scanner(System.in);
+        Scanner inputTicket = new Scanner(System.in);
         boolean count = true;
         
         // display user menu and take user choice
@@ -21,13 +22,13 @@ public class Ticket_CLI {
 
         while(count){
             System.out.print("\n>> Choose your service: ");
-            int choice = input.nextInt();
+            int choice = inputChoise.nextInt();
             if (choice > 0 && choice < 6){
 
                 // Add new ticket
                 if (choice == 1){
                     System.out.print("\nEnter your new ticket: ");
-                    String ticket = input.next();
+                    String ticket = inputTicket.nextLine();
                     if (gitIndex(tickets,ticket) != -1){
                         System.out.println("This ticket already exists!!");
                     }
@@ -58,13 +59,13 @@ public class Ticket_CLI {
                 // Update ticket
                 else if (choice == 3){
                     System.out.print("\nEnter your old ticket name: ");
-                    String ticket = input.next();
+                    String ticket = inputTicket.nextLine();
                     if (gitIndex(tickets,ticket) == -1){
                         System.out.printf("You have no ticket with (%s) name\n" ,ticket);
                     }
                     else{
                         System.out.print("Enter your new ticket name: ");
-                        String newTicket = input.next();
+                        String newTicket = inputTicket.nextLine();
                         tickets.set(gitIndex(tickets,ticket),newTicket);
                         System.out.printf("You have updated ticket name (%s) to (%s) ...!\n" , ticket , newTicket);
                     }
@@ -73,7 +74,7 @@ public class Ticket_CLI {
                 // Delete ticket
                 else if (choice == 4){
                     System.out.print("\nEnter your ticket name to delete: ");
-                    String ticket = input.next();
+                    String ticket = inputTicket.nextLine();
                     if (gitIndex(tickets,ticket) == -1){
                         System.out.printf("You have no ticket with (%s) name\n" ,ticket);
                     }
