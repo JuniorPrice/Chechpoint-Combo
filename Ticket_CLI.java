@@ -3,13 +3,13 @@ import java.util.Scanner;
 
 public class Ticket_CLI {
 
-    
     public static void main(String[] args) {
 
         // declear variables
         ArrayList<String> tickets = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         boolean count = true;
+        
         // display user menu and take user choice
         System.out.println("=".repeat(50));
         System.out.println("               Welcom to Ticket Desk CLI");
@@ -17,8 +17,6 @@ public class Ticket_CLI {
         System.out.println("Available Servecies:");
         System.out.println("(1) to Create a ticket\n(2) to List all tickets\n(3) to Update a ticket\n(4) to Close/Delete a ticket\n(5) to Exit");
         
-
-
         // procces user choice
 
         while(count){
@@ -68,21 +66,31 @@ public class Ticket_CLI {
                         System.out.print("Enter your new ticket name: ");
                         String newTicket = input.next();
                         tickets.set(gitIndex(tickets,ticket),newTicket);
-                        System.out.printf("You have updated ticket name (%s) to (%s) ...\n" , ticket , newTicket);
+                        System.out.printf("You have updated ticket name (%s) to (%s) ...!\n" , ticket , newTicket);
                     }
                 }
 
                 // Delete ticket
                 else if (choice == 4){
-                    // declear deleteTicket function
+                    System.out.print("\nEnter your ticket name to delete: ");
+                    String ticket = input.next();
+                    if (gitIndex(tickets,ticket) == -1){
+                        System.out.printf("You have no ticket with (%s) name\n" ,ticket);
+                    }
+                    else{
+                        tickets.remove(gitIndex(tickets,ticket));
+                        System.out.printf("You have successfully deleted ticket name (%s) ...!\n" , ticket);
+                    }
                 }
 
                 // Exit the program
                 else if (choice == 5){
-                    System.out.println("\nThank you for your time!...\n");
+                    System.out.println("\nThank you for your time...!\n");
                     count = false;
                 }
             }
+
+            // invalid input 
             else{
                 System.out.println("Invalid input! Try Again...");
             }
@@ -92,7 +100,7 @@ public class Ticket_CLI {
 
     }
 
-    // declear gitIndex function
+    // declear gitIndex function to return index number of the ticket
     static int gitIndex(ArrayList<String> tickets,String ticket){
         int index = -1;
         for (int i=0 ; i<tickets.size() ; i++){
@@ -102,9 +110,5 @@ public class Ticket_CLI {
         }
         return index;
     }
-
-
-    
-
     
 }
