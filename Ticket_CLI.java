@@ -59,7 +59,17 @@ public class Ticket_CLI {
 
                 // Update ticket
                 else if (choice == 3){
-                    // declear updateTicket function
+                    System.out.print("\nEnter your old ticket name: ");
+                    String ticket = input.next();
+                    if (gitIndex(tickets,ticket) == -1){
+                        System.out.printf("You have no ticket with (%s) name\n" ,ticket);
+                    }
+                    else{
+                        System.out.print("Enter your new ticket name: ");
+                        String newTicket = input.next();
+                        tickets.set(gitIndex(tickets,ticket),newTicket);
+                        System.out.printf("You have updated ticket name (%s) to (%s) ...\n" , ticket , newTicket);
+                    }
                 }
 
                 // Delete ticket
