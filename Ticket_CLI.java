@@ -26,6 +26,7 @@ public class Ticket_CLI {
             int choice = input.nextInt();
             if (choice > 0 && choice < 6){
 
+                // Add new ticket
                 if (choice == 1){
                     System.out.print("\nEnter your new ticket: ");
                     String ticket = input.next();
@@ -37,15 +38,36 @@ public class Ticket_CLI {
                         System.out.println("Congrats! Your ticket has been added ...");
                     }
                 }
+            
+                // List all tickets
                 else if (choice == 2){
-                    //declear listTickets function
+                    System.out.println("=".repeat(50));
+                    System.out.println("            Your Tickets");
+                    System.out.println("=".repeat(50));
+
+                    if (tickets.size()<1){
+                        System.out.println("You have no tickets yet ...!");
+                    }
+                    else{
+                        for(String ticket: tickets){
+                        System.out.println((gitIndex(tickets,ticket)+1) + " - " + ticket);
+                        }
+                    }
+                    
+                    System.out.println("=".repeat(50));
                 }
+
+                // Update ticket
                 else if (choice == 3){
                     // declear updateTicket function
                 }
+
+                // Delete ticket
                 else if (choice == 4){
                     // declear deleteTicket function
                 }
+
+                // Exit the program
                 else if (choice == 5){
                     System.out.println("\nThank you for your time!...\n");
                     count = false;
